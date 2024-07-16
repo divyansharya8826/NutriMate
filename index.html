@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriMate Chatbot</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .bg {
+            background-image: url('https://cloud-object-storage-cos-static-web-hosting-ahw.s3.jp-tok.cloud-object-storage.appdomain.cloud/Screenshot%202024-07-04%20at%209.53.10%E2%80%AFPM.png');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        .navbar {
+            display: flex;
+            justify-content: left;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+        }
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .content h1 {
+            font-size: 50px;
+        }
+        .content p {
+            font-size: 20px;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px;
+            border-radius: 8px;
+        }
+        .section.active {
+            display: block;
+        }
+        .diet-card {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: white;
+            color: black;
+        }
+        .diet-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "394a272a-91f7-4585-a5f6-8f6a183c7a00", // The ID of this integration.
+          region: "us-south", // The region your integration is hosted in.
+          serviceInstanceID: "f08ab2b6-05d4-495f-b6fd-0f0e1b86e770", // The ID of your service instance.
+          onLoad: async (instance) => { await instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+    </script>
+    <div class="bg">
+        <div class="navbar">
+            <a href="#home" onclick="showSection('home')">Home</a>
+            <a href="#diet" onclick="showSection('diet')">Diet</a>
+            <a href="#nutrition" onclick="showSection('nutrition')">Nutrition</a>
+            <a href="#exercises" onclick="showSection('exercises')">Exercises</a>
+        </div>
+        
+        <div id="diet" class="content section">
+            <h2>Diet Information</h2>
+            <div class="diet-card">
+                <img src="https://cloud-object-storage-cos-static-web-hosting-ahw.s3.jp-tok.cloud-object-storage.appdomain.cloud/various-foods-that-perfect-keto-260nw-1104380807%20copy.png" alt="Keto Diet">
+                <h3>Keto Diet</h3>
+                <p>The Keto Diet is a low-carb, high-fat diet that aims to put your body into a state of ketosis, where it burns fat for energy instead of carbohydrates.</p>
+            </div>
+            <div class="diet-card">
+                <img src="https://cloud-object-storage-cos-static-web-hosting-ahw.s3.jp-tok.cloud-object-storage.appdomain.cloud/dreamstime_xxl_169214503.jpg" alt="High-Protein Diet">
+                <h3>High-Protein Diet</h3>
+                <p>A High-Protein Diet focuses on increasing protein intake while moderating carbohydrates and fats, supporting muscle growth, repair, and satiety.</p>
+            </div>
+            <!-- Add more diet cards as needed -->
+        </div>
+        <div id="nutrition" class="content section">
+            <h2>Nutrition Information</h2>
+            <p>Detailed nutrition information for various diets will be listed here.</p>
+            <!-- Add nutrition information here -->
+        </div>
+        <div id="exercises" class="content section">
+            <h2>Exercises</h2>
+            <p>Exercises related to different diets will be listed here.</p>
+            <!-- Add exercises information here -->
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
